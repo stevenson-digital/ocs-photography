@@ -1,7 +1,7 @@
 <template>
     <nav class="c-NavBar">
         <ul class="c-NavBar__links u-ListBare">
-            <li v-for="link in links">
+            <li class="c-NavBar__link" v-for="link in links">
                 <nuxt-link :to="link.endpoint">{{ link.title }}</nuxt-link>
             </li>
         </ul>

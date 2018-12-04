@@ -2,9 +2,10 @@
     Fonts & Type
 =========================== */
 body {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: $c-black;
     font-size: 20px;
+    font-weight: 300;
 }

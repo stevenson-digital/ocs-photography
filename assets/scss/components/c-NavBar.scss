@@ -10,6 +10,21 @@
 /* ===========================
     c-NavBar (Elements)
 =========================== */
+.c-NavBar__links {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.c-NavBar__link {
+    margin-right: 20px;
+    
+    &:last-of-type() {
+        margin-right: 0;
+    }
+}
 
 
 /* ===========================
