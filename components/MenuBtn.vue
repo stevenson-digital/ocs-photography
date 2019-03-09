@@ -11,7 +11,6 @@ export default {
   methods: {
     openMenu() {
       this.$store.dispatch('navMenu/openNavMenu')
-      console.log(this.$store.state.navMenu.navMenuOpen)
     }
   }
 }

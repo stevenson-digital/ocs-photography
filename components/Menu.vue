@@ -1,5 +1,5 @@
 <template>
-  <nav class="c-Menu">
+  <nav class="c-Menu" v-bind:class="{'open': this.$store.state.navMenu.navMenuOpen}">
     <ul class="c-Menu__links u-ListBare">
       <li class="c-Menu__link" v-for="link in links">
         <nuxt-link :to="link.endpoint">{{ link.title }}</nuxt-link>

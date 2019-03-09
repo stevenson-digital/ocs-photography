@@ -1,9 +1,8 @@
-export const state = () => ({
-  counter: 0
-})
+// Manage top level state
+// export const state = () => ({
+//
+// })
 
-export const mutations = {
-  increment (state) {
-    state.counter++
-  }
-}
+// export const mutations = {
+//
+// }
