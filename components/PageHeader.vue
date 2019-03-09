@@ -1,22 +1,27 @@
 <template>
+  <div>
+    <Menu></Menu>
     <header>
-        <NavBar></NavBar>
+      <MenuBtn></MenuBtn>
     </header>
+  </div>
 </template>
 
 <script>
-import NavBar from './NavBar.vue'
+import Menu from './Menu.vue'
+import MenuBtn from './MenuBtn.vue'
 
 export default {
-    name: 'PageHeader',
-    data() {
-        return {
-          // links: {}
-        }
-    },
-    created() {},
-    components: {
-        NavBar
+  name: 'PageHeader',
+  data() {
+    return {
+      // links: {}
     }
+  },
+  // created() {},
+  components: {
+    Menu,
+    MenuBtn
+  }
 }
 </script>

@@ -1,16 +1,27 @@
 /* ===========================
-    c-NavBar (Block)
+    c-Menu (Block)
 =========================== */
-.c-NavBar {
-    height: $h-navbar;
-    border-bottom: 1px solid $c-light-grey;
+.c-Menu {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: $c-white;
+    opacity: 0;
+    visibility: hidden;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 
 /* ===========================
-    c-NavBar (Elements)
+    c-Menu (Elements)
 =========================== */
-.c-NavBar__links {
+.c-Menu__links {
     display: flex;
     width: 100%;
     align-items: center;
@@ -18,9 +29,9 @@
     height: 100%;
 }
 
-.c-NavBar__link {
+.c-Menu__link {
     margin-right: 20px;
-    
+
     &:last-of-type() {
         margin-right: 0;
     }
@@ -28,5 +39,5 @@
 
 
 /* ===========================
-    c-NavBar (Modifiers)
+    c-Menu (Modifiers)
 =========================== */
