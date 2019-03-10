@@ -12,12 +12,23 @@ import PageHeader from '../../components/PageHeader.vue'
 
 export default {
   name: 'SinglePost',
-  async asyncData({ params }) {
+  async asyncData({ params, error }) {
     const axios = require('axios')
-    const postSlug = params.slug
 
-    let { data } = await axios.get(`${wpBaseURL}wp-json/wp/v2/posts/?slug=${postSlug}`)
-    return { post: data[0] }
+    return axios.get(`${wpBaseURL}wp-json/wp/v2/posts/?slug=${params.slug}`)
+    .then((res) => {
+      // WordPress API doesn't return 404 when page doesn't exist
+      // It returns 200 with empty 'data' array
+      if (res.data.length > 0) {
+        return { post: res.data[0] }
+
+      } else {
+        error({ statusCode: 404, message: 'Post not found' })
+      }
+    })
+    .catch((e) => {
+      error({ statusCode: 404, message: 'Post not found' })
+    })
   },
   components: {
     PageHeader

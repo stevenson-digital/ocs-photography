@@ -6,6 +6,9 @@
       <li v-for="post in posts" :key="post.slug">
         <nuxt-link :to="`/blog/${post.slug}`">{{ post.title.rendered }}</nuxt-link>
       </li>
+      <li>
+        <nuxt-link :to="'/blog/test-post'">Test Post (404)</nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
