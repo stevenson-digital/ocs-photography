@@ -5,6 +5,7 @@
         <nuxt-link :to="link.endpoint">{{ link.title }}</nuxt-link>
       </li>
     </ul>
+    <button class="c-Menu__close" @click="closeMenu">Close</button>
   </nav>
 </template>
 
@@ -47,6 +48,9 @@ export default {
         .then(function() {
           // always executed
         });
+    },
+    closeMenu() {
+      this.$store.dispatch('navMenu/closeNavMenu')
     }
   }
 }

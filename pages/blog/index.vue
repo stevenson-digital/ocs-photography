@@ -19,36 +19,16 @@ import PageHeader from '../../components/PageHeader.vue'
 
 export default {
   name: 'Blog',
-  // MAKE ASYNC DATA AND RETURN JS OBJECT OF POSTS
-  data() {
-    return {
-      posts: []
-    }
-  },
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-    const axios = require('axios');
-    const self = this;
+  asyncData({ params, error }) {
+    const axios = require('axios')
 
-    axios.get(`${wpBaseURL}wp-json/wp/v2/posts`)
-      .then(function(response) {
-        // handle success
-        for (let post in response.data) {
-          // console.log(response.data[post]);
-          self.posts.push(response.data[post]);
-        }
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function() {
-        // always executed
-      });
-    }
+    return axios.get(`${wpBaseURL}wp-json/wp/v2/posts`)
+    .then((res) => {
+      return { posts: res.data }
+    })
+    .catch((e) => {
+      error({ statusCode: 404, message: 'Page not found' })
+    })
   },
   components: {
     PageHeader
