@@ -1,12 +1,9 @@
 <template>
   <div>
-    <p>Blog posts pulled from WordPress API:</p>
+    <p v-html="page.acf.overview"></p>
     <ul>
       <li v-for="post in posts" :key="post.slug">
         <nuxt-link :to="`/blog/${post.slug}`"><span v-html="post.title.rendered"></span></nuxt-link>
-      </li>
-      <li>
-        <nuxt-link :to="'/blog/test-post'">Test Post (404)</nuxt-link>
       </li>
     </ul>
   </div>
@@ -17,17 +14,15 @@ import PageHeader from '~/components/PageHeader.vue'
 
 export default {
   name: 'Blog',
-  asyncData({ params, error }) {
+  async asyncData({ query, error }) {
     const axios = require('axios')
+    let postsRes = await axios.get(`${process.env.wpBaseURL}wp-json/wp/v2/posts`)
+    let pageRes = await axios.get(`${process.env.wpBaseURL}wp-json/wp/v2/pages/?slug=blog`)
 
-    return axios.get(`${process.env.wpBaseURL}wp-json/wp/v2/posts`)
-    .then((res) => {
-      console.log(res.data)
-      return { posts: res.data }
-    })
-    .catch((e) => {
-      error({ statusCode: 404, message: 'Page not found' })
-    })
+    return {
+      posts: postsRes.data,
+      page: pageRes.data[0]
+    }
   },
   components: {
     PageHeader

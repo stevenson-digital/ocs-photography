@@ -1,6 +1,5 @@
 <template>
   <div>
-    <PageHeader></PageHeader>
     <h1>{{ post.title.rendered }}</h1>
     <div v-html="post.content.rendered"></div>
   </div>

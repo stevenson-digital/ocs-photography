@@ -1,6 +1,5 @@
 <template>
   <div>
-    <PageHeader></PageHeader>
     <p>This is the front page.</p>
   </div>
 </template>
