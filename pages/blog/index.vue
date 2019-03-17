@@ -1,10 +1,9 @@
 <template>
   <div>
-    <PageHeader></PageHeader>
-    <p>Testing pulling posts:</p>
+    <p>Blog posts pulled from WordPress API:</p>
     <ul>
       <li v-for="post in posts" :key="post.slug">
-        <nuxt-link :to="`/blog/${post.slug}`">{{ post.title.rendered }}</nuxt-link>
+        <nuxt-link :to="`/blog/${post.slug}`"><span v-html="post.title.rendered"></span></nuxt-link>
       </li>
       <li>
         <nuxt-link :to="'/blog/test-post'">Test Post (404)</nuxt-link>
@@ -14,16 +13,16 @@
 </template>
 
 <script>
-import { wpBaseURL } from '../../middleware/variables.js'
-import PageHeader from '../../components/PageHeader.vue'
+import PageHeader from '~/components/PageHeader.vue'
 
 export default {
   name: 'Blog',
   asyncData({ params, error }) {
     const axios = require('axios')
 
-    return axios.get(`${wpBaseURL}wp-json/wp/v2/posts`)
+    return axios.get(`${process.env.wpBaseURL}wp-json/wp/v2/posts`)
     .then((res) => {
+      console.log(res.data)
       return { posts: res.data }
     })
     .catch((e) => {
@@ -35,7 +34,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import './assets/scss/main.scss';
-</style>

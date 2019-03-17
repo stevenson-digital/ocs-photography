@@ -67,5 +67,8 @@ module.exports = {
         })
       }
     }
+  },
+  env: {
+    wpBaseURL: process.env.WP_BASE_URL || 'http://photography.local/'
   }
 }

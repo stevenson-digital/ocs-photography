@@ -7,15 +7,14 @@
 </template>
 
 <script>
-import { wpBaseURL } from '../../middleware/variables.js'
-import PageHeader from '../../components/PageHeader.vue'
+import PageHeader from '~/components/PageHeader.vue'
 
 export default {
   name: 'SinglePost',
   async asyncData({ params, error }) {
     const axios = require('axios')
 
-    return axios.get(`${wpBaseURL}wp-json/wp/v2/posts/?slug=${params.slug}`)
+    return axios.get(`${process.env.wpBaseURL}wp-json/wp/v2/posts/?slug=${params.slug}`)
     .then((res) => {
       // WordPress API doesn't return 404 when page doesn't exist
       // It returns 200 with empty 'data' array
@@ -35,7 +34,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import './assets/scss/main.scss';
-</style>
